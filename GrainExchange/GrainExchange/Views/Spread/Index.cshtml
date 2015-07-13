@@ -1,0 +1,32 @@
+﻿<div class="page-header">
+    <h1>Enter Settlelment Data</h1>
+</div>
+<div class="row">
+    @*<form method="POST" action="/Controllers/SettlementApiController">*@
+        <table>
+            <tr>
+                <th>Portfolio</th>
+                <th>Leg</th>
+                <th>Expiration</th>
+                <th>Product</th>
+                <th>Product_Settlement</th>
+                <th>Margin Requirement</th>
+                <th>ID</th>
+            </tr>
+            @foreach (var item in Model.SpreadList)
+            {
+                <hidden name="spreadId" value="@(item.spreadId)"></hidden>
+                <tr>
+                    <td>@item.portfolioId</td>
+                    <td>@item.leg</td>
+                    <td>@item.expiration</td>
+                    <td>@item.product</td>
+                    <td><input type="text" name="settlement_@(item.spreadId)" /></td>
+                    <td>@item.marginRequirement</td>
+                    <td>@item.spreadId</td>
+                </tr>
+            }
+        </table>
+        <button type="submit" name="Submit"/>
+    @*</form>*@ 
+</div>

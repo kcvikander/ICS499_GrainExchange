@@ -113,3 +113,9 @@ DELIMITER ;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
 -- Dump completed on 2015-06-29 16:05:31
+
+CREATE PROCEDURE `get_all_spread_records`()
+	SELECT *
+	FROM t_mgex_portfolio_spreads
+END ;;
+DELIMITER ;
