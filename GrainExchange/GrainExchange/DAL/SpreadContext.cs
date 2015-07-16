@@ -42,6 +42,10 @@ namespace GrainExchange.DAL
             return spreadList;
         }
 
+        public void saveSettlementData() {
+
+        }
+
         private static string GetConnectionString()
         {
             return ConfigurationManager.ConnectionStrings["mgex_marginsConnectionString"].ConnectionString;

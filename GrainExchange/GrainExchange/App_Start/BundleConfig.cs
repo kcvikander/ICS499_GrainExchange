@@ -11,7 +11,8 @@ namespace GrainExchange
             bundles.Add(new ScriptBundle("~/bundles/core").Include(
                         "~/Scripts/jquery-{version}.js",
                         "~/Scripts/bootstrap.js",
-                        "~/Scripts/respond.js"));
+                        "~/Scripts/respond.js",
+                        "~/Scripts/app.js"));
 
             // Use the development version of Modernizr to develop with and learn from. Then, when you're
             // ready for production, use the build tool at http://modernizr.com to pick only the tests you need.
