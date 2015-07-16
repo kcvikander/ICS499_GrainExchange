@@ -6,33 +6,33 @@
     <div id="error" class="alert alert-danger" role="alert" style="display: none;">Error saving data</div>
 </div>
 <div class="row">
-    <div class="spreadtable col-sm-10 col-sm-offset-1">
+    <div class="tableContainer col-sm-10 col-sm-offset-1">
         <form id="spread">
         <table>
                 <thead>
-            <tr>
-                <th>Portfolio</th>
-                <th>Leg</th>
-                <th>Expiration</th>
-                <th>Product</th>
-                <th>Settlements</th>
-                <th>Margin Requirement</th>
-                <th>ID</th>
-            </tr>
+                    <tr>
+                        <th>Portfolio</th>
+                        <th>Leg</th>
+                        <th>Expiration</th>
+                        <th>Product</th>
+                        <th>Settlements</th>
+                        <th>Margin Requirement</th>
+                        <th>ID</th>
+                    </tr>
                 </thead>
                 <tbody>
-            @foreach (var item in Model.SpreadList)
-            {
-                <tr>
-                    <td>@item.portfolioId</td>
-                    <td>@item.leg</td>
-                    <td>@item.expiration</td>
-                    <td>@item.product</td>
-                            <td><input type="text" class="settlement" name="settlement_@(item.spreadId)" /></td>
-                    <td>@item.marginRequirement</td>
-                    <td>@item.spreadId</td>
-                </tr>
-            }
+                @foreach (var item in Model.SpreadList)
+                {
+                    <tr>
+                        <td>@item.portfolioId</td>
+                        <td>@item.leg</td>
+                        <td>@item.expiration</td>
+                        <td>@item.product</td>
+                                <td><input type="text" class="settlement" name="settlement_@(item.spreadId)" /></td>
+                        <td>@item.marginRequirement</td>
+                        <td>@item.spreadId</td>
+                    </tr>
+                }
                 </tbody>
         </table>
             <button type="submit" name="Submit">Submit</button>

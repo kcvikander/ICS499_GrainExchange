@@ -276,3 +276,13 @@ DELIMITER ;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
 -- Dump completed on 2015-07-15 22:39:08
+DELIMITER $$
+drop procedure if exists `save_settlement`$$
+create procedure save_settlement(spread_id INT(10), settlement_in INT(10))
+begin
+	UPDATE t_mgex_portfolio_spreads
+    SET Product_Settlement = settlement_in
+    WHERE id = spread_id;
+end$$
+
+DELIMITER ;

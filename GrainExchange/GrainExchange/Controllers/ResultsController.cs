@@ -16,13 +16,13 @@ namespace GrainExchange.Controllers
         public ActionResult Index()
         {
             HistoryViewModel model = new HistoryViewModel();
-            model.HistoryList = db.getAllHistoryRecords(portId, start, end);
+            //model.HistoryList = db.getAllHistoryRecords();
             return View(model);
         }
         public ActionResult info()
         {
             HistoryViewModel model = new HistoryViewModel();
-            model.HistoryList = db.getAllHistoryRecords(portId, start, end);
+            //model.HistoryList = db.getAllHistoryRecords(portId, start, end);
             return View(model);
         }
     }

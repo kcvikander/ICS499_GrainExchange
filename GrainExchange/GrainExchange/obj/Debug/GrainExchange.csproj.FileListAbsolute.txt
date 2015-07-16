@@ -128,3 +128,5 @@ C:\Users\mlameyer\Source\Repos\ICS499_GrainExchange\GrainExchange\GrainExchange\
 C:\Users\mlameyer\Source\Repos\ICS499_GrainExchange\GrainExchange\GrainExchange\obj\Debug\GrainExchange.pdb
 C:\Users\mlameyer\Source\Repos\ICS499_GrainExchange\GrainExchange\GrainExchange\bin\Microsoft.AspNet.SignalR.Core.dll
 C:\Users\mlameyer\Source\Repos\ICS499_GrainExchange\GrainExchange\GrainExchange\bin\Microsoft.AspNet.SignalR.Core.xml
+C:\Users\Casey\Dropbox\School\ICS499 - Capstone\Workspace\ICS499_GrainExchange\GrainExchange\GrainExchange\bin\Microsoft.AspNet.SignalR.Core.dll
+C:\Users\Casey\Dropbox\School\ICS499 - Capstone\Workspace\ICS499_GrainExchange\GrainExchange\GrainExchange\bin\Microsoft.AspNet.SignalR.Core.xml

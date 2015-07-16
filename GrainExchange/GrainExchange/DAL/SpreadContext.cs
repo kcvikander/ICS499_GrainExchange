@@ -44,6 +44,7 @@ namespace GrainExchange.DAL
         public void saveSettlementData(List<Settlement> settlementList) {
             using (MySqlConnection con = new MySqlConnection(GetConnectionString()))
             {
+                con.Open();
                 foreach (Settlement thisSettlement in settlementList)
                 {
                     using (MySqlCommand cmd = new MySqlCommand("save_settlement", con))
@@ -54,17 +55,19 @@ namespace GrainExchange.DAL
                         cmd.ExecuteNonQuery();
                     }
                 }
+                con.Close();
             }
         }
 
         public void calculateSettlementTotals() {
             using (MySqlConnection con = new MySqlConnection(GetConnectionString()))
             {
-                using (MySqlCommand cmd = new MySqlCommand("save_settlement", con))
+                using (MySqlCommand cmd = new MySqlCommand("sp_portfolio_margin_Calc", con))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
-                    
+                    con.Open();
                     cmd.ExecuteNonQuery();
+                    con.Close();
                 }
             }
         }

@@ -11,8 +11,9 @@ namespace GrainExchange.DAL
 {
     public class HistoryContext
     {
-        public List<SettlementHistory> getAllHistoryRecords(int portId, DateTime start, DateTime end)
+        public List<SettlementHistory> getAllHistoryRecords(string portId, string start, string end)
         {
+
             List<SettlementHistory> historyList = new List<SettlementHistory>();
             String test = GetConnectionString();
             using (MySqlConnection con = new MySqlConnection(GetConnectionString()))
@@ -20,12 +21,19 @@ namespace GrainExchange.DAL
                 using (MySqlCommand cmd = new MySqlCommand("testHistory", con))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.AddWithValue("?portfolionumber", portId);
-                    cmd.Parameters["?portfolionumber"].Direction = ParameterDirection.Input;
-                    cmd.Parameters.AddWithValue("?dateBegin", start);
-                    cmd.Parameters["?dateBegin"].Direction = ParameterDirection.Input;
-                    cmd.Parameters.AddWithValue("?dateEnd", end);
-                    cmd.Parameters["?dateEnd"].Direction = ParameterDirection.Input;
+                    if (portId != null) {
+                        cmd.Parameters.AddWithValue("vPortfolio", Int32.Parse(portId));
+                        cmd.Parameters["vPortfolio"].Direction = ParameterDirection.Input;
+                    }
+                    if (start != null) {
+                        cmd.Parameters.AddWithValue("vDateStart", DateTime.Parse(start));
+                        cmd.Parameters["vDateStart"].Direction = ParameterDirection.Input;
+                    }
+                    if (end != null) {
+                        cmd.Parameters.AddWithValue("vDateEnd", DateTime.Parse(end));
+                        cmd.Parameters["vDateEnd"].Direction = ParameterDirection.Input;
+                    }               
+
                     using (MySqlDataAdapter sda = new MySqlDataAdapter(cmd))
                     {
                         DataTable dt = new DataTable();
