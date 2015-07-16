@@ -1,0 +1,45 @@
+﻿<div class="page-header">
+    <h1>Portfolio History</h1>
+</div>
+<div class="row">
+    @*<form method="POST" action="/Controllers/SettlementApiController">*@
+    @Html.TextBox("info", "Portfolio Number", new { Id = 3 })
+    @Html.TextBox("info", "Start Date", new { Id = "2015-07-01" })
+    @Html.TextBox("info", "End Date", new { Id = "2015-07-01" })
+    <input type="submit" value="Submit">
+    <table>
+        <tr>
+            <th>Portfolio</th>
+            <th>Leg 1</th>
+            <th>Leg 1 Settle</th>
+            <th>Leg 2</th>
+            <th>Leg 2 Settle</th>
+            <th>Product 1 Flux</th>
+            <th>Product 2 Flux</th>
+            <th>Spread Flux</th>
+            <th>Flux Extension</th>
+            <th>Margin Requirement</th>
+            <th>Margin Coverage</th>
+            <th>Settlement Date</th>
+        </tr>
+        @foreach (var item in Model.HistoryList)
+        {
+            <tr>
+                <td>@item.portfolio</td>
+                <td>@item.Leg1</td>
+                <td>@item.Leg1Settle</td>
+                <td>@item.Leg2</td>
+                <td>@item.Leg2Settle</td>
+                <td>@item.Leg1Flux</td>
+                <td>@item.Leg2Flux</td>
+                <td>@item.spreadFlux</td>
+                <td>@item.fluxExtension</td>
+                <td>@item.marginRequirement</td>
+                <td>@item.marginCoverage</td>
+                <td>@item.settlementDate</td>
+            </tr>
+        }
+    </table>
+    @*</form>*@
+</div>
+
