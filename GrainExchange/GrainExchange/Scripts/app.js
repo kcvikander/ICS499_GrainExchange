@@ -3,20 +3,21 @@
     console.log("initialized");
     $("#spread").submit(function (event) {
         event.preventDefault();
-        var i, len, temp, returnArray = [],d,settlementList = $('.settlement');
+        var i, len, temp, returnArray = [],listJson,settlementList = $('.settlement');
         len = settlementList.length;
         for (i = 0; i < len; i++) {
             temp = {
                 spreadId: settlementList[i].name.split("_")[1],
                 settlement: settlementList[i].value
             }
-            returnArray.push(temp);
+            returnArray.push(JSON.stringify(temp));
         }
-        d = JSON.stringify(returnArray);
+
+        listJson = JSON.stringify(returnArray);
         $.ajax({
             method:"post",
             url: "/api/save",
-            data: d,
+            data: listJson,
             crossDomain: true,
             async:false,
             success: function (data) {

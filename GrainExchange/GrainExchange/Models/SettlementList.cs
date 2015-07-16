@@ -5,10 +5,8 @@ using System.Web;
 
 namespace GrainExchange.Models
 {
-    public class Settlement
+    public class SettlementList
     {
-        public int spreadId { get; set; }
-        public int settlement { get; set; }
-
+        public List<Settlement> settlementList { get; set; }
     }
 }

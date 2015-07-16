@@ -119,3 +119,14 @@ CREATE PROCEDURE `get_all_spread_records`()
 	FROM t_mgex_portfolio_spreads
 END ;;
 DELIMITER ;
+
+DELIMITER $$
+drop procedure if exists `save_settlement`$$
+create procedure save_settlement(spread_id INT(10), settlement_in INT(10))
+begin
+	UPDATE t_mgex_portfolio_spreads
+    SET Product_Settlement = settlement_in
+    WHERE id = spread_id;
+end$$
+
+DELIMITER ;

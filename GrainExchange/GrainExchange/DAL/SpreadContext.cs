@@ -13,7 +13,6 @@ namespace GrainExchange.DAL
     {
         public List<Spread> getAllSpreadRecords() {
             List<Spread> spreadList = new List<Spread>();
-            String test = GetConnectionString();
             using (MySqlConnection con = new MySqlConnection(GetConnectionString()))
             {
                 using (MySqlCommand cmd = new MySqlCommand("get_all_spread_records", con))
@@ -42,8 +41,32 @@ namespace GrainExchange.DAL
             return spreadList;
         }
 
-        public void saveSettlementData() {
+        public void saveSettlementData(List<Settlement> settlementList) {
+            using (MySqlConnection con = new MySqlConnection(GetConnectionString()))
+            {
+                foreach (Settlement thisSettlement in settlementList)
+                {
+                    using (MySqlCommand cmd = new MySqlCommand("save_settlement", con))
+                    {
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Parameters.AddWithValue("spread_id", thisSettlement.spreadId);
+                        cmd.Parameters.AddWithValue("settlement_in", thisSettlement.settlement);
+                        cmd.ExecuteNonQuery();
+                    }
+                }
+            }
+        }
 
+        public void calculateSettlementTotals() {
+            using (MySqlConnection con = new MySqlConnection(GetConnectionString()))
+            {
+                using (MySqlCommand cmd = new MySqlCommand("save_settlement", con))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    
+                    cmd.ExecuteNonQuery();
+                }
+            }
         }
 
         private static string GetConnectionString()

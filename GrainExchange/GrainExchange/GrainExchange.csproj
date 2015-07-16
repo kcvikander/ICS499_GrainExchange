@@ -192,6 +192,7 @@
     <Compile Include="Models\HistoryViewModel.cs" />
     <Compile Include="Models\Settlement.cs" />
     <Compile Include="Models\SettlementHistory.cs" />
+    <Compile Include="Models\SettlementList.cs" />
     <Compile Include="Models\Spread.cs" />
     <Compile Include="Models\SpreadViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
