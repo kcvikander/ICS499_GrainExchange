@@ -18,7 +18,7 @@ namespace GrainExchange.DAL
             String test = GetConnectionString();
             using (MySqlConnection con = new MySqlConnection(GetConnectionString()))
             {
-                using (MySqlCommand cmd = new MySqlCommand("testHistory", con))
+                using (MySqlCommand cmd = new MySqlCommand("get_History_records", con))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
                     if (portId != null) {
@@ -26,11 +26,11 @@ namespace GrainExchange.DAL
                         cmd.Parameters["vPortfolio"].Direction = ParameterDirection.Input;
                     }
                     if (start != null) {
-                        cmd.Parameters.AddWithValue("vDateStart", DateTime.Parse(start));
+                        cmd.Parameters.AddWithValue("vDateStart", start);
                         cmd.Parameters["vDateStart"].Direction = ParameterDirection.Input;
                     }
                     if (end != null) {
-                        cmd.Parameters.AddWithValue("vDateEnd", DateTime.Parse(end));
+                        cmd.Parameters.AddWithValue("vDateEnd", end);
                         cmd.Parameters["vDateEnd"].Direction = ParameterDirection.Input;
                     }               
 
