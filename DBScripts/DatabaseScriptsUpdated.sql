@@ -258,7 +258,14 @@ BEGIN
 		margin_requirement,
 		Margin_Coverage,
 		Settlement_Date
-	FROM mgex_margins.t_mgex_portfolio_spreads_settlements_history;
+	FROM mgex_margins.t_mgex_portfolio_spreads_settlements_history
+    WHERE 1=1
+    AND (vPortfolio > 0
+       AND Portfolio = vPortfolio
+    ) OR (
+		vPortfolio < 0
+    )
+    AND Settlement_Date BETWEEN vDateStart AND vDateEnd;
 END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;

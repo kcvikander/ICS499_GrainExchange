@@ -6,9 +6,8 @@
     <div id="error" class="alert alert-danger" role="alert" style="display: none;">Error saving data</div>
 </div>
 <div class="row">
-    <div class="tableContainer col-sm-10 col-sm-offset-1">
-        <form id="spread">
-        <table>
+    <div class="col-sm-8 tableContainer">
+        <table class="table table-striped table-condensed">
                 <thead>
                     <tr>
                         <th>Portfolio</th>
@@ -17,7 +16,7 @@
                         <th>Product</th>
                         <th>Settlements</th>
                         <th>Margin Requirement</th>
-                        <th>ID</th>
+                        <th>Spread ID</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -28,14 +27,22 @@
                         <td>@item.leg</td>
                         <td>@item.expiration</td>
                         <td>@item.product</td>
-                                <td><input type="text" class="settlement" name="settlement_@(item.spreadId)" /></td>
+                        <td><input type="text" class="settlement" name="settlement_@(item.spreadId)" /></td>
                         <td>@item.marginRequirement</td>
                         <td>@item.spreadId</td>
                     </tr>
                 }
                 </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="1">
+                            <button id="clearValues" class="btn btn-primary left">Clear Values</button>
+                        </td>
+                        <td colspan="6">
+                            <button id="submitValues" class="btn btn-success right">Submit Values</button>
+                        </td>
+                    </tr>
+                </tfoot>
         </table>
-            <button type="submit" name="Submit">Submit</button>
-        </form>
     </div>
 </div>

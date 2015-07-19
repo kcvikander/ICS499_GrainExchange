@@ -1,15 +1,22 @@
 ﻿$(document).ready(function () {
     var self = this;
     console.log("initialized");
-    $("#spread").submit(function (event) {
+    /* SPREAD PAGE */
+    $("#submitValues").click(function (event) {
         event.preventDefault();
         saveSpreadData();
     });
-    $("#filters").submit(function (event) {
+    
+    $("#clearValues").click(function (event) {
         event.preventDefault();
-        filterData();
+        clearValues();
     });
-    $('#all').click(function (event) {
+    /* HISTORY PAGE */
+    $("#clearFilters").click(function (event) {
+        event.preventDefault();
+        clearFilters();
+    });
+    $('#getResults').click(function (event) {
         event.preventDefault();
         getHistoricalData();
     });
@@ -38,23 +45,23 @@ function saveSpreadData() {
             $('html, body').animate({
                 scrollTop: $('.page-header').offset().top
             }, 2000);
+            clearValues();
         },
         error: function (e) {
             $('#success').show();
             $('html, body').animate({
                 scrollTop: $('.page-header').offset().top
             }, 2000);
+            clearValues();
         }
     });
-}
-function filterData() {
+};
+
+function getHistoricalData(start, end, portfolioId) {
     var start, end, portfolioId;
     start = $('#start').val();
     end = $('#end').val();
     portfolioId = $('#portfolioId').val();
-    getHistoricalData(start, end, portfolioId);
-}
-function getHistoricalData(start, end, portfolioId) {    
     $.ajax({
         method: "get",
         url: "/api/getHistoricalData?start="+start+"&end="+end+"&portfolioId="+portfolioId,
@@ -94,4 +101,12 @@ function renderHistoryTable(records) {
         }
     }
     $('#results_table tbody').html(htmlString);
+};
+
+function clearValues() {
+    $('.settlement').val("");
+};
+
+function clearFilters() {
+    $('.form-control').val("");
 };
