@@ -278,7 +278,7 @@ DELIMITER ;
 -- Dump completed on 2015-07-15 22:39:08
 DELIMITER $$
 drop procedure if exists `save_settlement`$$
-create procedure save_settlement(spread_id INT(10), settlement_in INT(10))
+create procedure save_settlement(spread_id INT(10), settlement_in float)
 begin
 	UPDATE t_mgex_portfolio_spreads
     SET Product_Settlement = settlement_in
