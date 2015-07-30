@@ -8,7 +8,7 @@ namespace GrainExchange.Models
     public class Settlement
     {
         public int spreadId { get; set; }
-        public int settlement { get; set; }
+        public double settlement { get; set; }
 
     }
 }

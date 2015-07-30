@@ -21,18 +21,33 @@ namespace GrainExchange.DAL
                 using (MySqlCommand cmd = new MySqlCommand("get_History_records", con))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
-                    if (portId != null) {
+                    if (portId != null && portId.ToLower() != "undefined")
+                    {
                         cmd.Parameters.AddWithValue("vPortfolio", Int32.Parse(portId));
                         cmd.Parameters["vPortfolio"].Direction = ParameterDirection.Input;
                     }
-                    if (start != null) {
-                        cmd.Parameters.AddWithValue("vDateStart", start);
+                    else {
+                        cmd.Parameters.AddWithValue("vPortfolio", -1);
+                        cmd.Parameters["vPortfolio"].Direction = ParameterDirection.Input;
+                    }
+                    if (start != null && start.ToLower() != "undefined")
+                    {
+                        cmd.Parameters.AddWithValue("vDateStart", DateTime.Parse(start));
                         cmd.Parameters["vDateStart"].Direction = ParameterDirection.Input;
                     }
-                    if (end != null) {
-                        cmd.Parameters.AddWithValue("vDateEnd", end);
+                    else {
+                        cmd.Parameters.AddWithValue("vDateStart", DateTime.Parse("01/01/1900"));
+                        cmd.Parameters["vDateStart"].Direction = ParameterDirection.Input;
+                    }
+                    if (end != null && end.ToLower() != "undefined")
+                    {
+                        cmd.Parameters.AddWithValue("vDateEnd", DateTime.Parse(end));
                         cmd.Parameters["vDateEnd"].Direction = ParameterDirection.Input;
-                    }               
+                    }
+                    else {
+                        cmd.Parameters.AddWithValue("vDateEnd", DateTime.UtcNow);
+                        cmd.Parameters["vDateEnd"].Direction = ParameterDirection.Input;
+                    }             
 
                     using (MySqlDataAdapter sda = new MySqlDataAdapter(cmd))
                     {

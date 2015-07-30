@@ -2,18 +2,33 @@
     <h1>Portfolio History</h1>
 </div>
 <div class="row">
-    <div class="tableContainer">
-        <form id="filters">
-            <label for="start">Start</label>
-            <input type="date" name="start" id="start">
-            <label for="start">End</label>
-            <input type="date" name="end" id="end">
-            <label for="start">Portfolio ID</label>
-            <input type="text" name="portfolioId" id="portfolioId">
-            <button type="submit" value="Submit">Filter</button>
-            <button id="all" value="all">Get All</button>
-        </form>
-        <table id="results_table">
+    <div class="tableContainer panel panel-default">
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-sm-3">
+                    <div class="btn-group btn-group-sm btn-group-justified">
+                        <span class="btn btn-default" id="clearFilters">Clear Filters</span>
+                        <span class="btn btn-primary" id="getResults" value="all">Get Results</span>
+                    </div>
+                </div>
+                
+                <div class="col-sm-3">
+                    <div class="input-group input-group-sm">
+                        <span class="input-group-addon">Start</span>
+                        <input type="date" class="form-control" id="start" placeholder="Start">
+                    </div>
+                </div>
+                <div class="col-sm-3 input-group input-group-sm">
+                    <span class="input-group-addon">End</span>
+                    <input type="date" class="form-control" id="end" placeholder="End">
+                </div>
+                <div class="col-sm-3 input-group input-group-sm">
+                    <span class="input-group-addon">Portfolio ID</span>
+                    <input type="text" class="form-control" id="portfolioId" placeholder="Enter ID...">
+                </div>
+            </div>           
+        </div>
+        <table id="results_table" class="table table-bordered table-condensed table-striped table-hover">
             <thead>
                 <tr>
                     <th>Portfolio</th>
@@ -30,24 +45,13 @@
                     <th>Settlement Date</th>
                 </tr>
             </thead>
-            <tbody id="results-body"></tbody>
-            @*@foreach (var item in Model.HistoryList)
-                {
-                    <tr>
-                        <td>@item.portfolio</td>
-                        <td>@item.Leg1</td>
-                        <td>@item.Leg1Settle</td>
-                        <td>@item.Leg2</td>
-                        <td>@item.Leg2Settle</td>
-                        <td>@item.Leg1Flux</td>
-                        <td>@item.Leg2Flux</td>
-                        <td>@item.spreadFlux</td>
-                        <td>@item.fluxExtension</td>
-                        <td>@item.marginRequirement</td>
-                        <td>@item.marginCoverage</td>
-                        <td>@item.settlementDate</td>
-                    </tr>
-                }*@
+            <tbody id="results-body">
+                <tr>
+                    <td colspan="12">
+                        Use the buttons above to see previous settlement data.
+                    </td>
+                </tr>
+            </tbody>
         </table>
     </div>
 </div>
