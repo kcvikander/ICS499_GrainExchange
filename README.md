@@ -1,4 +1,4 @@
-# ICS499_GrainExchange
+# Grain Exchange
 Capstone Project for ICS499
 
 Grain Exchange is an MVC.NET application built to input daily pricing data into a mySQL database. 
